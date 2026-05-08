@@ -14,25 +14,19 @@ You opened a long markdown file. You want to mark it up like a PDF — highlight
 
 ## Install
 
-No install required — run from this directory:
-
 ```bash
-node markmark/bin/markmark.js path/to/file.md
+npx markmark-cli path/to/file.md         # one-shot, no install
+pnpm dlx markmark-cli path/to/file.md    # same, via pnpm
 ```
 
-To use the `markmark` command anywhere:
+Or install globally:
 
 ```bash
-cd markmark
-npm link
-markmark path/to/file.md       # works from any directory now
+npm i -g markmark-cli
+markmark path/to/file.md
 ```
 
-Once published to npm:
-
-```bash
-npx markmark path/to/file.md
-```
+Note: the npm package is `markmark-cli` (the unqualified name was taken), but the executable it installs is just `markmark`.
 
 ## Usage
 

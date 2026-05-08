@@ -1,7 +1,7 @@
 {
-  "name": "markmark",
+  "name": "markmark-cli",
   "version": "0.1.0",
-  "description": "Read, highlight, and comment on Markdown files in your browser. Comments save to a sidecar JSON file you can commit, diff, share, or export.",
+  "description": "Read, highlight, and comment on Markdown files in your browser. Comments save to a sidecar JSON file you can commit, diff, share, or export. Zero dependencies.",
   "type": "module",
   "bin": {
     "markmark": "bin/markmark.js"
@@ -10,7 +10,8 @@
   "files": [
     "bin",
     "lib",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "start": "node bin/markmark.js"
@@ -21,10 +22,22 @@
     "comments",
     "annotations",
     "highlight",
-    "review"
+    "review",
+    "cli",
+    "markdown-viewer",
+    "review-tool"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paperMoose/markmark.git"
+  },
+  "homepage": "https://github.com/paperMoose/markmark#readme",
+  "bugs": {
+    "url": "https://github.com/paperMoose/markmark/issues"
+  },
+  "author": "paperMoose",
+  "license": "MIT",
   "engines": {
     "node": ">=18"
-  },
-  "license": "MIT"
+  }
 }
