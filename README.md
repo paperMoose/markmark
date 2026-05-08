@@ -10,7 +10,36 @@ Local:    http://127.0.0.1:7331/
 
 ## Why
 
-You opened a long markdown file. You want to mark it up like a PDF — highlight passages, attach comments, hand it off — but keep the whole thing in plain text and version control. `markmark` does that. Pop open any `.md` file or directory of `.md` files, drag-select text, type a comment, done. Comments live in `<file>.comments.json` next to the source.
+**Built for fast, structured feedback on agent prompts — feedback an agent can then read and act on.**
+
+The workflow it solves:
+
+1. You're iterating on a prompt file (`my-agent.md`, `instructions.md`, a CLAUDE.md). It's long, dense, and you want to leave precise notes — "drop this line", "tighten this section", "this contradicts the rule above" — pinned to specific passages.
+2. Sticky-note tools and PDF reviewers don't keep your text reviewable in plain markdown. Inline `<!-- comments -->` get noisy. PR review threads vanish once merged.
+3. With markmark you `npx markmark-cli prompt.md`, drag-select the line, type the note. The comment saves to `prompt.md.comments.json` next to the source — a structured JSON sidecar with the exact quoted text, the section it's in, and your note.
+4. You hand the prompt + the comments file to an agent: *"Apply the feedback in `prompt.md.comments.json` to `prompt.md` and commit."* The agent has everything it needs to revise the prompt deterministically — quote text to find what you meant, comment body for what to do.
+
+It also works for any general markdown review (audit docs, RFCs, design docs, meeting notes), but the primary use case is the prompt-review → agent-revise feedback loop.
+
+### The sidecar JSON
+
+```json
+{
+  "source": "prompt.md",
+  "updatedAt": "2026-05-08T22:00:00.000Z",
+  "comments": [
+    {
+      "id": "c8j3kl9m",
+      "section": { "id": "rules", "title": "Rules" },
+      "quote": "Always respond in JSON",
+      "body": "Drop this — conflicts with the streaming rule below.",
+      "createdAt": "2026-05-08T22:00:00.000Z"
+    }
+  ]
+}
+```
+
+Plain JSON, commit-safe, hand-editable, and grep-able. An agent can iterate over `comments[]` and apply each one to the source by locating `quote` in the prompt and acting on `body`.
 
 ## Install
 
