@@ -1,0 +1,25 @@
+# node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+*.tgz
+
+# package lock — keep package.json the source of truth for now
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# editors / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*~
+
+# markmark sidecars from local testing
+*.comments.json
+
+# logs
+*.log
